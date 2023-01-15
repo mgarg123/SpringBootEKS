@@ -1,0 +1,20 @@
+apiVersion: apps.openshift.io/v1
+kind: DeploymentConfig
+metadata:
+  name: first-app-dc
+
+spec:
+  replicas: 2
+  selector:
+      app: FirstApp
+  template:
+    metadata:
+      labels:
+        app: FirstApp
+    spec:
+      containers:
+        - name: first-app-container
+          image: mgarg123/first-app:latest
+          ports:
+            - containerPort: 8080
+

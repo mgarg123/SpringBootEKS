@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: firstapp-deployment
+  namespace: default
+  labels:
+    app: FirstApp
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: FirstApp
+  template:
+    metadata:
+      labels:
+        app: FirstApp
+    spec:
+      containers:
+        - name: first-app-container
+          image: 388767859879.dkr.ecr.ap-south-1.amazonaws.com/first-app:latest
+          ports:
+            - containerPort: 8080
